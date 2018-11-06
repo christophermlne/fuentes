@@ -3,11 +3,10 @@ defmodule Fuentes.Amount do
   An Amount represents the individual debit or credit for a given account and is
   part of a balanced entry.
   """
-  alias Fuentes.{ Account, Amount }
 
   use Ecto.Schema
   import Ecto.Changeset
-  import Ecto.Query, only: [from: 1, from: 2]
+  import Ecto.Query, only: [from: 2]
 
   schema "amounts" do
     field :amount, :decimal
@@ -16,7 +15,7 @@ defmodule Fuentes.Amount do
     belongs_to :entry, Fuentes.Entry
     belongs_to :account, Fuentes.Account
 
-    timestamps
+    timestamps()
   end
 
   @fields ~w(amount type)
