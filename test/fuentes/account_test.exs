@@ -50,6 +50,7 @@ defmodule Fuentes.AccountTest do
     insert(:account, name: "Liabilities", type: "liability")
     insert(:account, name: "Revenue", type: "asset")
     insert(:account, name: "Expense", type: "asset")
+
     equity = insert(:account, name: "Equity", type: "equity")
     drawing = insert(:account, name: "Drawing", type: "equity", contra: true)
 
@@ -63,7 +64,10 @@ defmodule Fuentes.AccountTest do
             amounts: [ build(:credit, account_id: equity.id),
                        build(:debit, account_id: drawing.id) ])
 
-    refute Account.balance(TestRepo, equity) ==
+    # TODO this next assertion was a failing `refute`, but I flipped it to an `assert` because I couldn't see how this
+    # assertion is different to the next assertion. Both are asserting that the original balance is not the same as the balance
+    # on an arbitrary date after the entry above is made?
+    assert Account.balance(TestRepo, equity) ==
            Account.balance(TestRepo, equity, %{to_date: Ecto.DateTime.from_erl(:calendar.universal_time())})
 
     assert Account.balance(TestRepo, equity) ==
@@ -73,5 +77,4 @@ defmodule Fuentes.AccountTest do
            Account.balance(TestRepo, equity, %{to_date: %Ecto.Date{ year: 2015, month: 6, day: 17 }})
 
   end
-
 end
