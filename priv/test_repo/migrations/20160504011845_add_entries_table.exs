@@ -6,7 +6,7 @@ defmodule Fuentes.TestRepo.Migrations.AddEntriesTable do
       add :description, :string, null: false
       add :date, :date, null: false
 
-      timestamps
+      timestamps()
     end
 
     create index(:entries, [:date])

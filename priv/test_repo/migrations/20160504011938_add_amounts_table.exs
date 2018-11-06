@@ -8,7 +8,7 @@ defmodule Fuentes.TestRepo.Migrations.AddAmountsTable do
       add :account_id, references(:accounts, on_delete: :delete_all), null: false
       add :entry_id, references(:entries, on_delete: :delete_all), null: false
 
-      timestamps
+      timestamps()
     end
     create index(:amounts, [:type])
     create index(:amounts, [:account_id, :entry_id])

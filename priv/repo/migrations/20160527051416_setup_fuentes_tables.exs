@@ -7,7 +7,7 @@ defmodule Fuentes.Repo.Migrations.SetupFuentesTables do
       add :type, :string, null: false
       add :contra, :boolean, default: false
 
-      timestamps
+      timestamps()
     end
     create index(:accounts, [:name, :type])
 
@@ -15,7 +15,7 @@ defmodule Fuentes.Repo.Migrations.SetupFuentesTables do
       add :description, :string, null: false
       add :date, :date, null: false
 
-      timestamps
+      timestamps()
     end
     create index(:entries, [:date])
 
@@ -24,7 +24,7 @@ defmodule Fuentes.Repo.Migrations.SetupFuentesTables do
       add :account_id, references(:accounts, on_delete: :delete_all), null: false
       add :entry_id, references(:entries, on_delete: :delete_all), null: false
 
-      timestamps
+      timestamps()
     end
     create index(:credit_amounts, [:account_id, :entry_id])
     create index(:credit_amounts, [:entry_id, :account_id])
@@ -34,7 +34,7 @@ defmodule Fuentes.Repo.Migrations.SetupFuentesTables do
       add :account_id, references(:accounts, on_delete: :delete_all), null: false
       add :entry_id, references(:entries, on_delete: :delete_all), null: false
 
-      timestamps
+      timestamps()
     end
     create index(:debit_amounts, [:account_id, :entry_id])
     create index(:debit_amounts, [:entry_id, :account_id])

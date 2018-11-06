@@ -7,7 +7,7 @@ defmodule Fuentes.TestRepo.Migrations.AddAccountsTable do
       add :type, :string, null: false
       add :contra, :boolean, default: false
 
-      timestamps
+      timestamps()
     end
 
     create index(:accounts, [:name, :type])
