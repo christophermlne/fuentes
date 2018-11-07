@@ -33,7 +33,7 @@ defmodule Fuentes.Mixfile do
 
   defp deps do
     [
-      {:ecto, "~> 2.1.0"},
+      {:ecto, "~> 2.2.0"},
       {:postgrex, ">= 0.0.0"},
       {:ex_machina, git: "https://github.com/thoughtbot/ex_machina", tag: "v1.0.2", only: :test},
       {:earmark, ">= 0.0.0", only: :dev},
