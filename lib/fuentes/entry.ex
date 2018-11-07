@@ -21,7 +21,7 @@ defmodule Fuentes.Entry do
 
     has_many :amounts, Fuentes.Amount, on_delete: :delete_all
 
-    timestamps
+    timestamps()
   end
 
   @fields ~w(description date)

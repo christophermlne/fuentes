@@ -10,7 +10,7 @@ defmodule Mix.Tasks.Fuentes.Install do
 
   def run(_args) do
     source = Path.join(Application.app_dir(:fuentes, "/priv/templates/fuentes.install/"), "setup_fuentes_tables.exs")
-    target = Path.join(File.cwd!, "/priv/repo/migrations/#{timestamp}_setup_fuentes_tables.exs")
+    target = Path.join(File.cwd!, "/priv/repo/migrations/#{timestamp()}_setup_fuentes_tables.exs")
 
     if !File.dir?(target) do
       File.mkdir_p("priv/repo/migrations/")
